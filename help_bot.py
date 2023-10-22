@@ -44,7 +44,7 @@ def show_phone(arg, contacts):
     name = arg
     return contacts[name]
 
-
+@input_error
 def show_all(contacts):
     return [f"name: {name}, phone: {phone}" for name, phone in contacts.items()]
 
