@@ -1,5 +1,6 @@
 contacts = dict()
 
+
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -13,17 +14,20 @@ def input_error(func):
 
     return inner
 
+
 @input_error
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 @input_error
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "Contact added."
+
 
 @input_error
 def change_contact(args, contacts):
@@ -34,6 +38,7 @@ def change_contact(args, contacts):
         contacts[name] = phone
         return "Contact updated."
 
+
 @input_error
 def show_phone(arg, contacts):
     name = arg
@@ -42,6 +47,7 @@ def show_phone(arg, contacts):
 
 def show_all(contacts):
     return [f"name: {name}, phone: {phone}" for name, phone in contacts.items()]
+
 
 @input_error
 def main():
@@ -65,8 +71,7 @@ def main():
         elif command == "all":
             print(show_all(contacts))
         else:
-             print("Invalid command.")
-
+            print("Invalid command.")
 
 
 if __name__ == "__main__":
